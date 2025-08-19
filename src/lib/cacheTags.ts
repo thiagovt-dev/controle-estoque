@@ -6,4 +6,6 @@ export const TAGS = {
   stockWarehouse: (id: string) => `stock:warehouse:${id}`,
   inventoryList: "inventory:list",
   inventory: (id: string) => `inventory:${id}`,
+  requestsList: "requests:list",
+  request: (id: string) => `request:${id}`,
 };

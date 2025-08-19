@@ -5,6 +5,7 @@ import { productSchema } from "../lib/zodSchemas";
 import { SupabaseProductRepository } from "../data/implementations/SupabaseProductRepository";
 import { CreateProduct } from "../domain/use-cases/CreateProduct";
 import { TAGS } from "../lib/cacheTags";
+import { requireRole } from "../infra/auth/requireRole";
 
 export async function createProduct(formData: FormData) {
   const payload = {
@@ -16,8 +17,8 @@ export async function createProduct(formData: FormData) {
     minStock: Number(formData.get("minStock") || 0),
     active: String(formData.get("active") || "true") === "true",
   };
-  
   const parsed = productSchema.parse(payload);
+  await requireRole(["admin"], parsed.orgId);
   const repo = new SupabaseProductRepository();
   const useCase = new CreateProduct(repo);
   const created = await useCase.execute(parsed);

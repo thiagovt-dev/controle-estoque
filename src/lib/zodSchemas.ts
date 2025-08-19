@@ -35,3 +35,25 @@ export const inventoryItemSchema = z.object({
 export const inventoryCloseSchema = z.object({
   inventoryId: z.string().uuid(),
 });
+
+
+export const requestOpenSchema = z.object({
+  orgId: z.string().uuid(),
+  departmentId: z.string().uuid(),
+  warehouseId: z.string().uuid(),
+});
+
+export const requestItemSchema = z.object({
+  requestId: z.string().uuid(),
+  productId: z.string().uuid(),
+  qty: z.coerce.number().positive(),
+});
+
+export const requestApproveSchema = z.object({
+  requestId: z.string().uuid(),
+});
+
+export const requestRejectSchema = z.object({
+  requestId: z.string().uuid(),
+  reason: z.string().min(1),
+});

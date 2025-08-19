@@ -17,6 +17,9 @@ export default function Home() {
         <Link className="px-3 py-2 rounded bg-black text-white" href="/reports/balances">
           Relatórios
         </Link>
+        <Link className="px-3 py-2 rounded bg-black text-white" href="/requests">
+          Requisições
+        </Link>
       </div>
     </main>
   );
