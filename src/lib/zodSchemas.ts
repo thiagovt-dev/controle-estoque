@@ -20,3 +20,18 @@ export const moveSchema = z.object({
   reason: z.string().nullable().optional(),
   refId: z.string().nullable().optional(),
 });
+
+export const inventoryOpenSchema = z.object({
+  orgId: z.string().uuid(),
+  warehouseId: z.string().uuid(),
+});
+
+export const inventoryItemSchema = z.object({
+  inventoryId: z.string().uuid(),
+  productId: z.string().uuid(),
+  countedQty: z.coerce.number(),
+});
+
+export const inventoryCloseSchema = z.object({
+  inventoryId: z.string().uuid(),
+});
